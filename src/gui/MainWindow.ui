@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1239</width>
+    <height>605</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MalelfGUI - Be evil!</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout_2">
+    <item>
+     <widget class="QSplitter" name="splitter_3">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <widget class="QSplitter" name="splitter">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <widget class="QHexEdit" name="hexDump">
+        <property name="widgetResizable">
+         <bool>true</bool>
+        </property>
+        <widget class="QWidget" name="scrollAreaWidgetContents">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>76</width>
+           <height>183</height>
+          </rect>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QTableWidget" name="inspector">
+        <row>
+         <property name="text">
+          <string/>
+         </property>
+        </row>
+        <column>
+         <property name="text">
+          <string>Property</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Value</string>
+         </property>
+        </column>
+        <item row="0" column="0">
+         <property name="text">
+          <string>Entry Point</string>
+         </property>
+         <property name="flags">
+          <set>ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+         </property>
+        </item>
+       </widget>
+      </widget>
+      <widget class="QSplitter" name="splitter_2">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <widget class="QTreeWidget" name="fileTree">
+        <column>
+         <property name="text">
+          <string notr="true">Section</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Description</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Value</string>
+         </property>
+        </column>
+        <item>
+         <property name="text">
+          <string>ELF Header</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <item>
+          <property name="text">
+           <string>e_type</string>
+          </property>
+          <property name="text">
+           <string>Object Type</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>e_version</string>
+          </property>
+          <property name="text">
+           <string>Version</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>e_entry</string>
+          </property>
+          <property name="text">
+           <string>Entry Point</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>e_phoff</string>
+          </property>
+          <property name="text">
+           <string>PHT Offset</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>e_shoff</string>
+          </property>
+          <property name="text">
+           <string>SHT Offset</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>e_ehsize</string>
+          </property>
+          <property name="text">
+           <string>ELF Header size</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>e_phentsize</string>
+          </property>
+          <property name="text">
+           <string>Size of PHT Entries</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>e_phnum</string>
+          </property>
+          <property name="text">
+           <string>Number of PHT Entries</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>e_shentsize</string>
+          </property>
+          <property name="text">
+           <string>Size of one SHT Entry</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>e_shnum</string>
+          </property>
+          <property name="text">
+           <string>Number of sections</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>e_shstrndx</string>
+          </property>
+          <property name="text">
+           <string>SHT Symbol index</string>
+          </property>
+         </item>
+        </item>
+        <item>
+         <property name="text">
+          <string>Program Header Table (PHT)</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Section Header Table (SHT)</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Symbol Table</string>
+         </property>
+        </item>
+       </widget>
+       <widget class="QTextBrowser" name="log"/>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1239</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionOpen_ELF"/>
+    <addaction name="actionSave_ELF"/>
+    <addaction name="actionSave_ELF_As"/>
+    <addaction name="actionClose_ELF"/>
+    <addaction name="separator"/>
+    <addaction name="actionQuit"/>
+   </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="actionAbout"/>
+   </widget>
+   <widget class="QMenu" name="menuDissect">
+    <property name="title">
+     <string>Edit</string>
+    </property>
+    <widget class="QMenu" name="menuView">
+     <property name="title">
+      <string>View</string>
+     </property>
+     <addaction name="actionColor_ELF"/>
+     <addaction name="actionASCII"/>
+    </widget>
+    <addaction name="actionDissect_Section"/>
+    <addaction name="actionRedo"/>
+    <addaction name="actionFind_Replace"/>
+    <addaction name="separator"/>
+    <addaction name="menuView"/>
+   </widget>
+   <widget class="QMenu" name="menuInfect">
+    <property name="title">
+     <string>Infect</string>
+    </property>
+    <widget class="QMenu" name="menuInfect_Binary">
+     <property name="title">
+      <string>Infect Binary</string>
+     </property>
+     <addaction name="actionSilvio_Cesare_s_Padding"/>
+     <addaction name="actionNOP_filling"/>
+    </widget>
+    <addaction name="menuInfect_Binary"/>
+   </widget>
+   <widget class="QMenu" name="menuAnalyse">
+    <property name="title">
+     <string>Analyse</string>
+    </property>
+    <widget class="QMenu" name="menuStatic_Analysis">
+     <property name="title">
+      <string>Static Analysis</string>
+     </property>
+     <addaction name="actionDisassemble"/>
+     <addaction name="actionAnalyse_Section"/>
+     <addaction name="actionReverse_into_C"/>
+    </widget>
+    <addaction name="menuStatic_Analysis"/>
+    <addaction name="actionDynamic_Analysis"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuDissect"/>
+   <addaction name="menuAnalyse"/>
+   <addaction name="menuInfect"/>
+   <addaction name="menuHelp"/>
+  </widget>
+  <action name="actionOpen_ELF">
+   <property name="text">
+    <string>Open ELF</string>
+   </property>
+  </action>
+  <action name="actionClose_ELF">
+   <property name="text">
+    <string>Close ELF</string>
+   </property>
+  </action>
+  <action name="actionQuit">
+   <property name="text">
+    <string>Quit</string>
+   </property>
+  </action>
+  <action name="actionSave_ELF">
+   <property name="text">
+    <string>Save ELF</string>
+   </property>
+  </action>
+  <action name="actionDissect_Section">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Undo</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="text">
+    <string>About</string>
+   </property>
+  </action>
+  <action name="actionRedo">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Redo</string>
+   </property>
+  </action>
+  <action name="actionFind_Replace">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Find/Replace</string>
+   </property>
+  </action>
+  <action name="actionDynamic_Analysis">
+   <property name="text">
+    <string>Dynamic Analysis</string>
+   </property>
+  </action>
+  <action name="actionSave_ELF_As">
+   <property name="text">
+    <string>Save ELF As...</string>
+   </property>
+  </action>
+  <action name="actionDisassemble">
+   <property name="text">
+    <string>Disassemble</string>
+   </property>
+  </action>
+  <action name="actionAnalyse_Section">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Analyse Section</string>
+   </property>
+  </action>
+  <action name="actionReverse_into_C">
+   <property name="text">
+    <string>Reverse into C</string>
+   </property>
+  </action>
+  <action name="actionSilvio_Cesare_s_Padding">
+   <property name="text">
+    <string>Silvio Cesare's Padding</string>
+   </property>
+  </action>
+  <action name="actionNOP_filling">
+   <property name="text">
+    <string>NOP filling</string>
+   </property>
+  </action>
+  <action name="actionColor_ELF">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Color ELF</string>
+   </property>
+  </action>
+  <action name="actionASCII">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>ASCII</string>
+   </property>
+  </action>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QHexEdit</class>
+   <extends>QScrollArea</extends>
+   <header>qhexedit/qhexedit.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>
