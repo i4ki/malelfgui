@@ -183,3 +183,18 @@ void QHexEdit::setColorELF(bool set) const
 {
     qHexEdit_p->setColorELF(set);
 }
+
+void QHexEdit::setELFHeaderSize(int size) const
+{
+    qHexEdit_p->ELFheaderSize = size;
+}
+
+void QHexEdit::setELFPhtOffset(int offset) const
+{
+    qHexEdit_p->ELFphtOffset = offset;
+}
+
+void QHexEdit::setELFShtOffset(int offset) const
+{
+    qHexEdit_p->ELFshtOffset = offset;
+}

@@ -180,6 +180,9 @@ public:
     /*! \endcond docNever */
     
     void setColorELF(bool) const;
+    void setELFHeaderSize(int) const;
+    void setELFPhtOffset(int) const;
+    void setELFShtOffset(int) const;
 
 public slots:
     /*! Redoes the last operation. If there is no operation to redo, i.e.

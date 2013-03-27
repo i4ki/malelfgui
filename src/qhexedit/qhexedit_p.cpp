@@ -26,6 +26,9 @@ QHexEditPrivate::QHexEditPrivate(QScrollArea *parent) : QWidget(parent)
     setFont(QFont("Courier", 10));
 
     setColorELF(true);
+    this->ELFheaderSize = 0x0;
+    this->ELFphtOffset = 0x0;
+    this->ELFshtOffset = 0x0;
 
     _size = 0;
     resetSelection(0);
@@ -663,39 +666,31 @@ void QHexEditPrivate::paintEvent(QPaintEvent *event)
             {               
                 if(_colorELF)
                 {
-                    int headerAddress = 0x1000;
-                    int phtAddress = 0x2000;
-                    int shtAddress = 0x3000;
-                    int sectionsAddress = 0x4000;
+                    int address = lineIdx + _xData.addressOffset();
 
-                    int address = lineIdx + _xData.addressOffset(); //_xData.realAddressNumbers();
-
-                    QColor headerColor = Qt::darkRed;
-                    QColor phtColor = Qt::darkGreen;
+                    QColor headerColor = Qt::red;
+                    QColor phtColor = Qt::green;
                     QColor shtColor = Qt::magenta;
-                    QColor sectionsColor = Qt::darkCyan;
+                    //QColor sectionsColor = Qt::cyan;
                     QBrush brush;
                    
-                    if(address <= headerAddress)
-                        brush = QBrush(headerColor);
-                    
-                    if(address <= phtAddress)
-                        brush = QBrush(phtColor);
-                    
-                    if(address <= shtAddress)
-                        brush = QBrush(shtColor);
-                    
-                    if(address <= sectionsAddress)
-                        brush = QBrush(sectionsColor);
+                    if(address <= (0x00000000 + this->ELFheaderSize))
+                        brush = QBrush(headerColor);                 
+                    else if(address >= this->ELFphtOffset && address <= this->ELFshtOffset)
+                        brush = QBrush(phtColor);                    
+                    //else if(address >= sectionsAddressBegin && address <= sectionsAddressEnd)
+                    //    brush = QBrush(sectionsColor);
+                    else if(address >= this->ELFshtOffset)
+                        brush = QBrush(shtColor);                    
 
                     painter.setBackground(brush);
                     painter.setPen(colHighlighted);
                     painter.setBackgroundMode(Qt::OpaqueMode);
                 }
 
-                if (_highlighting)
+                /*if (_highlighting)
                 {
-                    // hilight diff bytes
+                    // highlight diff bytes
                     painter.setBackground(highLighted);
                     if (_xData.dataChanged(posBa))
                     {
@@ -707,8 +702,7 @@ void QHexEditPrivate::paintEvent(QPaintEvent *event)
                         painter.setPen(colStandard);
                         painter.setBackgroundMode(Qt::TransparentMode);
                     }
-                }
-
+                }*/
             }
 
             // render hex value

@@ -49,7 +49,7 @@ private:
 
     void init();
     void setCurrentFile(QFile*);
-    std::string executeMalelf(char*);
+    void setAddresses();
 
     bool viewASCII;
     bool colorELF;

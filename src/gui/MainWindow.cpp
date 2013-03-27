@@ -22,6 +22,8 @@ MainWindow::~MainWindow()
 
 void MainWindow::init(){
 
+    this->setCurrentFile(NULL);
+
     this->viewASCII = true;
     this->colorELF = true;
     ui->actionASCII->setChecked(true);
@@ -29,6 +31,14 @@ void MainWindow::init(){
 
     ui->splitter->setStretchFactor(0,1);
     ui->splitter->setStretchFactor(1,0);
+
+    ui->splitter_2->setStretchFactor(0,1);
+    ui->splitter_2->setStretchFactor(1,0);
+
+    for(int i = 0; i < ui->fileTree->columnCount(); i++)
+        ui->fileTree->resizeColumnToContents(i);
+
+    this->showMaximized();
 }
 
 void MainWindow::on_actionQuit_triggered()
@@ -52,6 +62,7 @@ void MainWindow::on_actionOpen_ELF_triggered()
         }
 
     QApplication::setOverrideCursor(Qt::WaitCursor);
+    this->setAddresses();
     ui->hexDump->setData(file->readAll());
     QApplication::restoreOverrideCursor();
 
@@ -72,6 +83,7 @@ void MainWindow::on_actionClose_ELF_triggered()
     if(this->currentFile)
         this->currentFile->close();
 
+    this->setAddresses();
     ui->hexDump->setData(NULL);
 }
 
@@ -96,23 +108,24 @@ void MainWindow::on_actionSave_ELF_triggered()
 
 void MainWindow::on_actionSave_ELF_As_triggered()
 {
-    QString fileName = QFileDialog::getOpenFileName(this, tr("Open File"),
-                                                     "",
-                                                     tr("Files (*.*)"));
+    if(this->currentFile){
+        QString fileName = QFileDialog::getOpenFileName(this, tr("Open File"),
+                                                         "",
+                                                         tr("Files (*.*)"));
 
-    QFile* file = new QFile(fileName);
-        if (!file->open(QFile::ReadWrite)) {
-            QMessageBox::warning(this, tr("SDI"),
-                                 tr("Cannot read file %1:\n%2.")
-                                 .arg(fileName)
-                                 .arg(file->errorString()));
-            return;
-        }
+        QFile* file = new QFile(fileName);
+            if (!file->open(QFile::ReadWrite)) {
+                QMessageBox::warning(this, tr("SDI"),
+                                     tr("Cannot read file %1:\n%2.")
+                                     .arg(fileName)
+                                     .arg(file->errorString()));
+                return;
+            }
 
-    file->write(ui->hexDump->data());
+        file->write(ui->hexDump->data());
 
-    this->setCurrentFile(file);
-
+        this->setCurrentFile(file);
+    }
 }
 
 void MainWindow::on_actionDisassemble_triggered()
@@ -143,4 +156,11 @@ void MainWindow::on_actionASCII_triggered()
 {
     this->viewASCII = ui->actionASCII->isChecked();
     ui->hexDump->setAsciiArea(this->viewASCII);
+}
+
+void MainWindow::setAddresses(){
+    //Example values, they will have to be taken from the ELF
+    ui->hexDump->setELFHeaderSize(0x34);
+    ui->hexDump->setELFPhtOffset(0x00000034);
+    ui->hexDump->setELFShtOffset(0x00000100);
 }

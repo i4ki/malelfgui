@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1239</width>
-    <height>605</height>
+    <width>874</width>
+    <height>566</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,15 +17,15 @@
    <property name="enabled">
     <bool>true</bool>
    </property>
-   <layout class="QHBoxLayout" name="horizontalLayout_2">
+   <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
-     <widget class="QSplitter" name="splitter_3">
+     <widget class="QSplitter" name="splitter_2">
       <property name="orientation">
-       <enum>Qt::Vertical</enum>
+       <enum>Qt::Horizontal</enum>
       </property>
       <widget class="QSplitter" name="splitter">
        <property name="orientation">
-        <enum>Qt::Horizontal</enum>
+        <enum>Qt::Vertical</enum>
        </property>
        <widget class="QHexEdit" name="hexDump">
         <property name="widgetResizable">
@@ -36,192 +36,162 @@
           <rect>
            <x>0</x>
            <y>0</y>
-           <width>76</width>
-           <height>183</height>
+           <width>600</width>
+           <height>276</height>
           </rect>
          </property>
         </widget>
        </widget>
-       <widget class="QTableWidget" name="inspector">
-        <row>
+       <widget class="QTextBrowser" name="log"/>
+      </widget>
+      <widget class="QTreeWidget" name="fileTree">
+       <column>
+        <property name="text">
+         <string notr="true">Section</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Description</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Value</string>
+        </property>
+       </column>
+       <item>
+        <property name="text">
+         <string>ELF Header</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <item>
+         <property name="text">
+          <string>e_type</string>
+         </property>
+         <property name="text">
+          <string>Object Type</string>
+         </property>
          <property name="text">
           <string/>
          </property>
-        </row>
-        <column>
+        </item>
+        <item>
          <property name="text">
-          <string>Property</string>
+          <string>e_version</string>
          </property>
-        </column>
-        <column>
          <property name="text">
-          <string>Value</string>
+          <string>Version</string>
          </property>
-        </column>
-        <item row="0" column="0">
+         <property name="text">
+          <string/>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>e_entry</string>
+         </property>
          <property name="text">
           <string>Entry Point</string>
          </property>
-         <property name="flags">
-          <set>ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
-         </property>
-        </item>
-       </widget>
-      </widget>
-      <widget class="QSplitter" name="splitter_2">
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
-       </property>
-       <widget class="QTreeWidget" name="fileTree">
-        <column>
-         <property name="text">
-          <string notr="true">Section</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Description</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Value</string>
-         </property>
-        </column>
-        <item>
-         <property name="text">
-          <string>ELF Header</string>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <item>
-          <property name="text">
-           <string>e_type</string>
-          </property>
-          <property name="text">
-           <string>Object Type</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>e_version</string>
-          </property>
-          <property name="text">
-           <string>Version</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>e_entry</string>
-          </property>
-          <property name="text">
-           <string>Entry Point</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>e_phoff</string>
-          </property>
-          <property name="text">
-           <string>PHT Offset</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>e_shoff</string>
-          </property>
-          <property name="text">
-           <string>SHT Offset</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>e_ehsize</string>
-          </property>
-          <property name="text">
-           <string>ELF Header size</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>e_phentsize</string>
-          </property>
-          <property name="text">
-           <string>Size of PHT Entries</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>e_phnum</string>
-          </property>
-          <property name="text">
-           <string>Number of PHT Entries</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>e_shentsize</string>
-          </property>
-          <property name="text">
-           <string>Size of one SHT Entry</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>e_shnum</string>
-          </property>
-          <property name="text">
-           <string>Number of sections</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>e_shstrndx</string>
-          </property>
-          <property name="text">
-           <string>SHT Symbol index</string>
-          </property>
-         </item>
         </item>
         <item>
          <property name="text">
-          <string>Program Header Table (PHT)</string>
+          <string>e_phoff</string>
          </property>
          <property name="text">
-          <string/>
-         </property>
-         <property name="text">
-          <string/>
+          <string>PHT Offset</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Section Header Table (SHT)</string>
+          <string>e_shoff</string>
          </property>
          <property name="text">
-          <string/>
-         </property>
-         <property name="text">
-          <string/>
+          <string>SHT Offset</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Symbol Table</string>
+          <string>e_ehsize</string>
+         </property>
+         <property name="text">
+          <string>ELF Header size</string>
          </property>
         </item>
-       </widget>
-       <widget class="QTextBrowser" name="log"/>
+        <item>
+         <property name="text">
+          <string>e_phentsize</string>
+         </property>
+         <property name="text">
+          <string>Size of PHT Entries</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>e_phnum</string>
+         </property>
+         <property name="text">
+          <string>Number of PHT Entries</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>e_shentsize</string>
+         </property>
+         <property name="text">
+          <string>Size of one SHT Entry</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>e_shnum</string>
+         </property>
+         <property name="text">
+          <string>Number of sections</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>e_shstrndx</string>
+         </property>
+         <property name="text">
+          <string>SHT Symbol index</string>
+         </property>
+        </item>
+       </item>
+       <item>
+        <property name="text">
+         <string>Program Header Table (PHT)</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Section Header Table (SHT)</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Symbol Table</string>
+        </property>
+       </item>
       </widget>
      </widget>
     </item>
@@ -232,7 +202,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1239</width>
+     <width>874</width>
      <height>25</height>
     </rect>
    </property>
@@ -412,7 +382,7 @@
   <customwidget>
    <class>QHexEdit</class>
    <extends>QScrollArea</extends>
-   <header>qhexedit/qhexedit.h</header>
+   <header>../qhexedit/qhexedit.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

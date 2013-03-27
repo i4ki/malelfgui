@@ -33,5 +33,4 @@ HEADERS  += src/gui/MainWindow.h \
 FORMS    += src/gui/MainWindow.ui
 
 OTHER_FILES += \
-    MalelfGUI.pro.user \
     src/qhexedit/license.txt

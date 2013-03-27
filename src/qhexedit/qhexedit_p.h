@@ -63,6 +63,10 @@ public:
     
     void setColorELF(bool);
 
+    int ELFheaderSize;
+    int ELFphtOffset;
+    int ELFshtOffset;
+
 signals:
     void currentAddressChanged(int address);
     void currentSizeChanged(int size);

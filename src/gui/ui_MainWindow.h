@@ -1,14 +1,14 @@
 /********************************************************************************
-** Form generated from reading UI file 'MainWindownn5203.ui'
+** Form generated from reading UI file 'MainWindowdu9073.ui'
 **
-** Created: Wed Mar 27 08:35:43 2013
+** Created: Wed Mar 27 10:28:17 2013
 **      by: Qt User Interface Compiler version 4.8.3
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef MAINWINDOWNN5203_H
-#define MAINWINDOWNN5203_H
+#ifndef MAINWINDOWDU9073_H
+#define MAINWINDOWDU9073_H
 
 #include <QtCore/QVariant>
 #include <QtGui/QAction>
@@ -20,7 +20,6 @@
 #include <QtGui/QMenu>
 #include <QtGui/QMenuBar>
 #include <QtGui/QSplitter>
-#include <QtGui/QTableWidget>
 #include <QtGui/QTextBrowser>
 #include <QtGui/QTreeWidget>
 #include <QtGui/QWidget>
@@ -49,15 +48,13 @@ public:
     QAction *actionColor_ELF;
     QAction *actionASCII;
     QWidget *centralwidget;
-    QHBoxLayout *horizontalLayout_2;
-    QSplitter *splitter_3;
+    QHBoxLayout *horizontalLayout;
+    QSplitter *splitter_2;
     QSplitter *splitter;
     QHexEdit *hexDump;
     QWidget *scrollAreaWidgetContents;
-    QTableWidget *inspector;
-    QSplitter *splitter_2;
-    QTreeWidget *fileTree;
     QTextBrowser *log;
+    QTreeWidget *fileTree;
     QMenuBar *menubar;
     QMenu *menuFile;
     QMenu *menuHelp;
@@ -72,7 +69,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(1239, 605);
+        MainWindow->resize(874, 566);
         actionOpen_ELF = new QAction(MainWindow);
         actionOpen_ELF->setObjectName(QString::fromUtf8("actionOpen_ELF"));
         actionClose_ELF = new QAction(MainWindow);
@@ -116,42 +113,26 @@ public:
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         centralwidget->setEnabled(true);
-        horizontalLayout_2 = new QHBoxLayout(centralwidget);
-        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
-        splitter_3 = new QSplitter(centralwidget);
-        splitter_3->setObjectName(QString::fromUtf8("splitter_3"));
-        splitter_3->setOrientation(Qt::Vertical);
-        splitter = new QSplitter(splitter_3);
+        horizontalLayout = new QHBoxLayout(centralwidget);
+        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        splitter_2 = new QSplitter(centralwidget);
+        splitter_2->setObjectName(QString::fromUtf8("splitter_2"));
+        splitter_2->setOrientation(Qt::Horizontal);
+        splitter = new QSplitter(splitter_2);
         splitter->setObjectName(QString::fromUtf8("splitter"));
-        splitter->setOrientation(Qt::Horizontal);
+        splitter->setOrientation(Qt::Vertical);
         hexDump = new QHexEdit(splitter);
         hexDump->setObjectName(QString::fromUtf8("hexDump"));
         hexDump->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QString::fromUtf8("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 76, 183));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 600, 276));
         //hexDump->setWidget(scrollAreaWidgetContents);
         splitter->addWidget(hexDump);
-        inspector = new QTableWidget(splitter);
-        if (inspector->columnCount() < 2)
-            inspector->setColumnCount(2);
-        QTableWidgetItem *__qtablewidgetitem = new QTableWidgetItem();
-        inspector->setHorizontalHeaderItem(0, __qtablewidgetitem);
-        QTableWidgetItem *__qtablewidgetitem1 = new QTableWidgetItem();
-        inspector->setHorizontalHeaderItem(1, __qtablewidgetitem1);
-        if (inspector->rowCount() < 1)
-            inspector->setRowCount(1);
-        QTableWidgetItem *__qtablewidgetitem2 = new QTableWidgetItem();
-        inspector->setVerticalHeaderItem(0, __qtablewidgetitem2);
-        QTableWidgetItem *__qtablewidgetitem3 = new QTableWidgetItem();
-        __qtablewidgetitem3->setFlags(Qt::ItemIsDragEnabled|Qt::ItemIsUserCheckable|Qt::ItemIsEnabled);
-        inspector->setItem(0, 0, __qtablewidgetitem3);
-        inspector->setObjectName(QString::fromUtf8("inspector"));
-        splitter->addWidget(inspector);
-        splitter_3->addWidget(splitter);
-        splitter_2 = new QSplitter(splitter_3);
-        splitter_2->setObjectName(QString::fromUtf8("splitter_2"));
-        splitter_2->setOrientation(Qt::Vertical);
+        log = new QTextBrowser(splitter);
+        log->setObjectName(QString::fromUtf8("log"));
+        splitter->addWidget(log);
+        splitter_2->addWidget(splitter);
         fileTree = new QTreeWidget(splitter_2);
         QTreeWidgetItem *__qtreewidgetitem = new QTreeWidgetItem();
         __qtreewidgetitem->setText(0, QString::fromUtf8("Section"));
@@ -173,17 +154,13 @@ public:
         new QTreeWidgetItem(fileTree);
         fileTree->setObjectName(QString::fromUtf8("fileTree"));
         splitter_2->addWidget(fileTree);
-        log = new QTextBrowser(splitter_2);
-        log->setObjectName(QString::fromUtf8("log"));
-        splitter_2->addWidget(log);
-        splitter_3->addWidget(splitter_2);
 
-        horizontalLayout_2->addWidget(splitter_3);
+        horizontalLayout->addWidget(splitter_2);
 
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 1239, 25));
+        menubar->setGeometry(QRect(0, 0, 874, 25));
         menuFile = new QMenu(menubar);
         menuFile->setObjectName(QString::fromUtf8("menuFile"));
         menuHelp = new QMenu(menubar);
@@ -255,22 +232,11 @@ public:
         actionNOP_filling->setText(QApplication::translate("MainWindow", "NOP filling", 0, QApplication::UnicodeUTF8));
         actionColor_ELF->setText(QApplication::translate("MainWindow", "Color ELF", 0, QApplication::UnicodeUTF8));
         actionASCII->setText(QApplication::translate("MainWindow", "ASCII", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem = inspector->horizontalHeaderItem(0);
-        ___qtablewidgetitem->setText(QApplication::translate("MainWindow", "Property", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem1 = inspector->horizontalHeaderItem(1);
-        ___qtablewidgetitem1->setText(QApplication::translate("MainWindow", "Value", 0, QApplication::UnicodeUTF8));
-
-        const bool __sortingEnabled = inspector->isSortingEnabled();
-        inspector->setSortingEnabled(false);
-        QTableWidgetItem *___qtablewidgetitem2 = inspector->item(0, 0);
-        ___qtablewidgetitem2->setText(QApplication::translate("MainWindow", "Entry Point", 0, QApplication::UnicodeUTF8));
-        inspector->setSortingEnabled(__sortingEnabled);
-
         QTreeWidgetItem *___qtreewidgetitem = fileTree->headerItem();
         ___qtreewidgetitem->setText(2, QApplication::translate("MainWindow", "Value", 0, QApplication::UnicodeUTF8));
         ___qtreewidgetitem->setText(1, QApplication::translate("MainWindow", "Description", 0, QApplication::UnicodeUTF8));
 
-        const bool __sortingEnabled1 = fileTree->isSortingEnabled();
+        const bool __sortingEnabled = fileTree->isSortingEnabled();
         fileTree->setSortingEnabled(false);
         QTreeWidgetItem *___qtreewidgetitem1 = fileTree->topLevelItem(0);
         ___qtreewidgetitem1->setText(0, QApplication::translate("MainWindow", "ELF Header", 0, QApplication::UnicodeUTF8));
@@ -313,7 +279,7 @@ public:
         ___qtreewidgetitem14->setText(0, QApplication::translate("MainWindow", "Section Header Table (SHT)", 0, QApplication::UnicodeUTF8));
         QTreeWidgetItem *___qtreewidgetitem15 = fileTree->topLevelItem(3);
         ___qtreewidgetitem15->setText(0, QApplication::translate("MainWindow", "Symbol Table", 0, QApplication::UnicodeUTF8));
-        fileTree->setSortingEnabled(__sortingEnabled1);
+        fileTree->setSortingEnabled(__sortingEnabled);
 
         menuFile->setTitle(QApplication::translate("MainWindow", "File", 0, QApplication::UnicodeUTF8));
         menuHelp->setTitle(QApplication::translate("MainWindow", "Help", 0, QApplication::UnicodeUTF8));
@@ -333,4 +299,4 @@ namespace Ui {
 
 QT_END_NAMESPACE
 
-#endif // MAINWINDOWNN5203_H
+#endif // MAINWINDOWDU9073_H
