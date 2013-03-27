@@ -1,6 +1,9 @@
 #include "MainWindow.h"
 #include "ui_MainWindow.h"
 
+#include <iostream>
+
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -38,6 +41,8 @@ void MainWindow::init(){
     for(int i = 0; i < ui->fileTree->columnCount(); i++)
         ui->fileTree->resizeColumnToContents(i);
 
+    this->setMenusEnabled(false);
+
     this->showMaximized();
 }
 
@@ -67,24 +72,21 @@ void MainWindow::on_actionOpen_ELF_triggered()
     QApplication::restoreOverrideCursor();
 
     this->setCurrentFile(file);
+    this->setMenusEnabled(true);
 
     QString cmd = "malelf dissect -i " + fileName;
     QString result = util->executeMalelf(cmd);
     ui->log->setText(result);
-
-    //Colorize ELF sections
-    //ui->hexDump->
-
-
 }
 
 void MainWindow::on_actionClose_ELF_triggered()
 {
-    if(this->currentFile)
+    if(this->currentFile){
         this->currentFile->close();
-
-    this->setAddresses();
-    ui->hexDump->setData(NULL);
+        this->setAddresses();
+        ui->hexDump->setData(NULL);
+        this->setMenusEnabled(false);
+    }
 }
 
 void MainWindow::setCurrentFile(QFile* file)
@@ -102,14 +104,16 @@ void MainWindow::on_actionAbout_triggered()
 
 void MainWindow::on_actionSave_ELF_triggered()
 {
-    if(this->currentFile)
+    if(this->currentFile){
+        this->currentFile->seek(0);
         this->currentFile->write(ui->hexDump->data());
+    }
 }
 
 void MainWindow::on_actionSave_ELF_As_triggered()
 {
     if(this->currentFile){
-        QString fileName = QFileDialog::getOpenFileName(this, tr("Open File"),
+        QString fileName = QFileDialog::getOpenFileName(this, tr("Save ELF as..."),
                                                          "",
                                                          tr("Files (*.*)"));
 
@@ -150,12 +154,14 @@ void MainWindow::on_actionColor_ELF_triggered()
 {
     this->colorELF = ui->actionColor_ELF->isChecked();
     ui->hexDump->setColorELF(this->colorELF);
+    ui->hexDump->repaint();
 }
 
 void MainWindow::on_actionASCII_triggered()
 {
     this->viewASCII = ui->actionASCII->isChecked();
     ui->hexDump->setAsciiArea(this->viewASCII);
+    ui->hexDump->repaint();
 }
 
 void MainWindow::setAddresses(){
@@ -163,4 +169,30 @@ void MainWindow::setAddresses(){
     ui->hexDump->setELFHeaderSize(0x34);
     ui->hexDump->setELFPhtOffset(0x00000034);
     ui->hexDump->setELFShtOffset(0x00000100);
+}
+
+void MainWindow::on_actionAutomatic_triggered()
+{
+    if(this->currentFile){
+        /*QString cmd = "malelf dynanalyse -a -i " + this->currentFile->fileName();
+        QString result = util->executeMalelf(cmd);
+        ui->log->setText(result);*/
+    }
+}
+
+void MainWindow::setMenusEnabled(bool enabled)
+{
+    ui->menuEdit->setEnabled(enabled);
+    ui->menuAnalyse->setEnabled(enabled);
+    ui->menuInfect->setEnabled(enabled);
+}
+
+void MainWindow::on_actionUndo_triggered()
+{
+    ui->hexDump->undo();
+}
+
+void MainWindow::on_actionRedo_triggered()
+{
+    ui->hexDump->redo();
 }

@@ -36,8 +36,8 @@
           <rect>
            <x>0</x>
            <y>0</y>
-           <width>600</width>
-           <height>276</height>
+           <width>423</width>
+           <height>76</height>
           </rect>
          </property>
         </widget>
@@ -223,7 +223,7 @@
     </property>
     <addaction name="actionAbout"/>
    </widget>
-   <widget class="QMenu" name="menuDissect">
+   <widget class="QMenu" name="menuEdit">
     <property name="title">
      <string>Edit</string>
     </property>
@@ -234,7 +234,7 @@
      <addaction name="actionColor_ELF"/>
      <addaction name="actionASCII"/>
     </widget>
-    <addaction name="actionDissect_Section"/>
+    <addaction name="actionUndo"/>
     <addaction name="actionRedo"/>
     <addaction name="actionFind_Replace"/>
     <addaction name="separator"/>
@@ -265,11 +265,18 @@
      <addaction name="actionAnalyse_Section"/>
      <addaction name="actionReverse_into_C"/>
     </widget>
+    <widget class="QMenu" name="menuDynamic_Analysis">
+     <property name="title">
+      <string>Dynamic Analysis</string>
+     </property>
+     <addaction name="actionAutomatic"/>
+     <addaction name="actionInteractive"/>
+    </widget>
     <addaction name="menuStatic_Analysis"/>
-    <addaction name="actionDynamic_Analysis"/>
+    <addaction name="menuDynamic_Analysis"/>
    </widget>
    <addaction name="menuFile"/>
-   <addaction name="menuDissect"/>
+   <addaction name="menuEdit"/>
    <addaction name="menuAnalyse"/>
    <addaction name="menuInfect"/>
    <addaction name="menuHelp"/>
@@ -294,9 +301,9 @@
     <string>Save ELF</string>
    </property>
   </action>
-  <action name="actionDissect_Section">
+  <action name="actionUndo">
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="text">
     <string>Undo</string>
@@ -309,7 +316,7 @@
   </action>
   <action name="actionRedo">
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="text">
     <string>Redo</string>
@@ -321,11 +328,6 @@
    </property>
    <property name="text">
     <string>Find/Replace</string>
-   </property>
-  </action>
-  <action name="actionDynamic_Analysis">
-   <property name="text">
-    <string>Dynamic Analysis</string>
    </property>
   </action>
   <action name="actionSave_ELF_As">
@@ -352,11 +354,17 @@
    </property>
   </action>
   <action name="actionSilvio_Cesare_s_Padding">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>Silvio Cesare's Padding</string>
    </property>
   </action>
   <action name="actionNOP_filling">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>NOP filling</string>
    </property>
@@ -377,12 +385,25 @@
     <string>ASCII</string>
    </property>
   </action>
+  <action name="actionAutomatic">
+   <property name="text">
+    <string>Automatic</string>
+   </property>
+  </action>
+  <action name="actionInteractive">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Interactive</string>
+   </property>
+  </action>
  </widget>
  <customwidgets>
   <customwidget>
    <class>QHexEdit</class>
    <extends>QScrollArea</extends>
-   <header>../qhexedit/qhexedit.h</header>
+   <header>qhexedit/qhexedit.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

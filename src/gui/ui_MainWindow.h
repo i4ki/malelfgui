@@ -1,14 +1,14 @@
 /********************************************************************************
-** Form generated from reading UI file 'MainWindowdu9073.ui'
+** Form generated from reading UI file 'MainWindown12296.ui'
 **
-** Created: Wed Mar 27 10:28:17 2013
+** Created: Wed Mar 27 11:41:34 2013
 **      by: Qt User Interface Compiler version 4.8.3
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef MAINWINDOWDU9073_H
-#define MAINWINDOWDU9073_H
+#ifndef MAINWINDOWN12296_H
+#define MAINWINDOWN12296_H
 
 #include <QtCore/QVariant>
 #include <QtGui/QAction>
@@ -34,11 +34,10 @@ public:
     QAction *actionClose_ELF;
     QAction *actionQuit;
     QAction *actionSave_ELF;
-    QAction *actionDissect_Section;
+    QAction *actionUndo;
     QAction *actionAbout;
     QAction *actionRedo;
     QAction *actionFind_Replace;
-    QAction *actionDynamic_Analysis;
     QAction *actionSave_ELF_As;
     QAction *actionDisassemble;
     QAction *actionAnalyse_Section;
@@ -47,6 +46,8 @@ public:
     QAction *actionNOP_filling;
     QAction *actionColor_ELF;
     QAction *actionASCII;
+    QAction *actionAutomatic;
+    QAction *actionInteractive;
     QWidget *centralwidget;
     QHBoxLayout *horizontalLayout;
     QSplitter *splitter_2;
@@ -58,12 +59,13 @@ public:
     QMenuBar *menubar;
     QMenu *menuFile;
     QMenu *menuHelp;
-    QMenu *menuDissect;
+    QMenu *menuEdit;
     QMenu *menuView;
     QMenu *menuInfect;
     QMenu *menuInfect_Binary;
     QMenu *menuAnalyse;
     QMenu *menuStatic_Analysis;
+    QMenu *menuDynamic_Analysis;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -78,19 +80,17 @@ public:
         actionQuit->setObjectName(QString::fromUtf8("actionQuit"));
         actionSave_ELF = new QAction(MainWindow);
         actionSave_ELF->setObjectName(QString::fromUtf8("actionSave_ELF"));
-        actionDissect_Section = new QAction(MainWindow);
-        actionDissect_Section->setObjectName(QString::fromUtf8("actionDissect_Section"));
-        actionDissect_Section->setEnabled(false);
+        actionUndo = new QAction(MainWindow);
+        actionUndo->setObjectName(QString::fromUtf8("actionUndo"));
+        actionUndo->setEnabled(true);
         actionAbout = new QAction(MainWindow);
         actionAbout->setObjectName(QString::fromUtf8("actionAbout"));
         actionRedo = new QAction(MainWindow);
         actionRedo->setObjectName(QString::fromUtf8("actionRedo"));
-        actionRedo->setEnabled(false);
+        actionRedo->setEnabled(true);
         actionFind_Replace = new QAction(MainWindow);
         actionFind_Replace->setObjectName(QString::fromUtf8("actionFind_Replace"));
         actionFind_Replace->setEnabled(false);
-        actionDynamic_Analysis = new QAction(MainWindow);
-        actionDynamic_Analysis->setObjectName(QString::fromUtf8("actionDynamic_Analysis"));
         actionSave_ELF_As = new QAction(MainWindow);
         actionSave_ELF_As->setObjectName(QString::fromUtf8("actionSave_ELF_As"));
         actionDisassemble = new QAction(MainWindow);
@@ -102,14 +102,21 @@ public:
         actionReverse_into_C->setObjectName(QString::fromUtf8("actionReverse_into_C"));
         actionSilvio_Cesare_s_Padding = new QAction(MainWindow);
         actionSilvio_Cesare_s_Padding->setObjectName(QString::fromUtf8("actionSilvio_Cesare_s_Padding"));
+        actionSilvio_Cesare_s_Padding->setEnabled(false);
         actionNOP_filling = new QAction(MainWindow);
         actionNOP_filling->setObjectName(QString::fromUtf8("actionNOP_filling"));
+        actionNOP_filling->setEnabled(false);
         actionColor_ELF = new QAction(MainWindow);
         actionColor_ELF->setObjectName(QString::fromUtf8("actionColor_ELF"));
         actionColor_ELF->setCheckable(true);
         actionASCII = new QAction(MainWindow);
         actionASCII->setObjectName(QString::fromUtf8("actionASCII"));
         actionASCII->setCheckable(true);
+        actionAutomatic = new QAction(MainWindow);
+        actionAutomatic->setObjectName(QString::fromUtf8("actionAutomatic"));
+        actionInteractive = new QAction(MainWindow);
+        actionInteractive->setObjectName(QString::fromUtf8("actionInteractive"));
+        actionInteractive->setEnabled(false);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         centralwidget->setEnabled(true);
@@ -126,7 +133,7 @@ public:
         hexDump->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QString::fromUtf8("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 600, 276));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 423, 76));
         //hexDump->setWidget(scrollAreaWidgetContents);
         splitter->addWidget(hexDump);
         log = new QTextBrowser(splitter);
@@ -165,9 +172,9 @@ public:
         menuFile->setObjectName(QString::fromUtf8("menuFile"));
         menuHelp = new QMenu(menubar);
         menuHelp->setObjectName(QString::fromUtf8("menuHelp"));
-        menuDissect = new QMenu(menubar);
-        menuDissect->setObjectName(QString::fromUtf8("menuDissect"));
-        menuView = new QMenu(menuDissect);
+        menuEdit = new QMenu(menubar);
+        menuEdit->setObjectName(QString::fromUtf8("menuEdit"));
+        menuView = new QMenu(menuEdit);
         menuView->setObjectName(QString::fromUtf8("menuView"));
         menuInfect = new QMenu(menubar);
         menuInfect->setObjectName(QString::fromUtf8("menuInfect"));
@@ -177,10 +184,12 @@ public:
         menuAnalyse->setObjectName(QString::fromUtf8("menuAnalyse"));
         menuStatic_Analysis = new QMenu(menuAnalyse);
         menuStatic_Analysis->setObjectName(QString::fromUtf8("menuStatic_Analysis"));
+        menuDynamic_Analysis = new QMenu(menuAnalyse);
+        menuDynamic_Analysis->setObjectName(QString::fromUtf8("menuDynamic_Analysis"));
         MainWindow->setMenuBar(menubar);
 
         menubar->addAction(menuFile->menuAction());
-        menubar->addAction(menuDissect->menuAction());
+        menubar->addAction(menuEdit->menuAction());
         menubar->addAction(menuAnalyse->menuAction());
         menubar->addAction(menuInfect->menuAction());
         menubar->addAction(menuHelp->menuAction());
@@ -191,21 +200,23 @@ public:
         menuFile->addSeparator();
         menuFile->addAction(actionQuit);
         menuHelp->addAction(actionAbout);
-        menuDissect->addAction(actionDissect_Section);
-        menuDissect->addAction(actionRedo);
-        menuDissect->addAction(actionFind_Replace);
-        menuDissect->addSeparator();
-        menuDissect->addAction(menuView->menuAction());
+        menuEdit->addAction(actionUndo);
+        menuEdit->addAction(actionRedo);
+        menuEdit->addAction(actionFind_Replace);
+        menuEdit->addSeparator();
+        menuEdit->addAction(menuView->menuAction());
         menuView->addAction(actionColor_ELF);
         menuView->addAction(actionASCII);
         menuInfect->addAction(menuInfect_Binary->menuAction());
         menuInfect_Binary->addAction(actionSilvio_Cesare_s_Padding);
         menuInfect_Binary->addAction(actionNOP_filling);
         menuAnalyse->addAction(menuStatic_Analysis->menuAction());
-        menuAnalyse->addAction(actionDynamic_Analysis);
+        menuAnalyse->addAction(menuDynamic_Analysis->menuAction());
         menuStatic_Analysis->addAction(actionDisassemble);
         menuStatic_Analysis->addAction(actionAnalyse_Section);
         menuStatic_Analysis->addAction(actionReverse_into_C);
+        menuDynamic_Analysis->addAction(actionAutomatic);
+        menuDynamic_Analysis->addAction(actionInteractive);
 
         retranslateUi(MainWindow);
 
@@ -219,11 +230,10 @@ public:
         actionClose_ELF->setText(QApplication::translate("MainWindow", "Close ELF", 0, QApplication::UnicodeUTF8));
         actionQuit->setText(QApplication::translate("MainWindow", "Quit", 0, QApplication::UnicodeUTF8));
         actionSave_ELF->setText(QApplication::translate("MainWindow", "Save ELF", 0, QApplication::UnicodeUTF8));
-        actionDissect_Section->setText(QApplication::translate("MainWindow", "Undo", 0, QApplication::UnicodeUTF8));
+        actionUndo->setText(QApplication::translate("MainWindow", "Undo", 0, QApplication::UnicodeUTF8));
         actionAbout->setText(QApplication::translate("MainWindow", "About", 0, QApplication::UnicodeUTF8));
         actionRedo->setText(QApplication::translate("MainWindow", "Redo", 0, QApplication::UnicodeUTF8));
         actionFind_Replace->setText(QApplication::translate("MainWindow", "Find/Replace", 0, QApplication::UnicodeUTF8));
-        actionDynamic_Analysis->setText(QApplication::translate("MainWindow", "Dynamic Analysis", 0, QApplication::UnicodeUTF8));
         actionSave_ELF_As->setText(QApplication::translate("MainWindow", "Save ELF As...", 0, QApplication::UnicodeUTF8));
         actionDisassemble->setText(QApplication::translate("MainWindow", "Disassemble", 0, QApplication::UnicodeUTF8));
         actionAnalyse_Section->setText(QApplication::translate("MainWindow", "Analyse Section", 0, QApplication::UnicodeUTF8));
@@ -232,6 +242,8 @@ public:
         actionNOP_filling->setText(QApplication::translate("MainWindow", "NOP filling", 0, QApplication::UnicodeUTF8));
         actionColor_ELF->setText(QApplication::translate("MainWindow", "Color ELF", 0, QApplication::UnicodeUTF8));
         actionASCII->setText(QApplication::translate("MainWindow", "ASCII", 0, QApplication::UnicodeUTF8));
+        actionAutomatic->setText(QApplication::translate("MainWindow", "Automatic", 0, QApplication::UnicodeUTF8));
+        actionInteractive->setText(QApplication::translate("MainWindow", "Interactive", 0, QApplication::UnicodeUTF8));
         QTreeWidgetItem *___qtreewidgetitem = fileTree->headerItem();
         ___qtreewidgetitem->setText(2, QApplication::translate("MainWindow", "Value", 0, QApplication::UnicodeUTF8));
         ___qtreewidgetitem->setText(1, QApplication::translate("MainWindow", "Description", 0, QApplication::UnicodeUTF8));
@@ -283,12 +295,13 @@ public:
 
         menuFile->setTitle(QApplication::translate("MainWindow", "File", 0, QApplication::UnicodeUTF8));
         menuHelp->setTitle(QApplication::translate("MainWindow", "Help", 0, QApplication::UnicodeUTF8));
-        menuDissect->setTitle(QApplication::translate("MainWindow", "Edit", 0, QApplication::UnicodeUTF8));
+        menuEdit->setTitle(QApplication::translate("MainWindow", "Edit", 0, QApplication::UnicodeUTF8));
         menuView->setTitle(QApplication::translate("MainWindow", "View", 0, QApplication::UnicodeUTF8));
         menuInfect->setTitle(QApplication::translate("MainWindow", "Infect", 0, QApplication::UnicodeUTF8));
         menuInfect_Binary->setTitle(QApplication::translate("MainWindow", "Infect Binary", 0, QApplication::UnicodeUTF8));
         menuAnalyse->setTitle(QApplication::translate("MainWindow", "Analyse", 0, QApplication::UnicodeUTF8));
         menuStatic_Analysis->setTitle(QApplication::translate("MainWindow", "Static Analysis", 0, QApplication::UnicodeUTF8));
+        menuDynamic_Analysis->setTitle(QApplication::translate("MainWindow", "Dynamic Analysis", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };
@@ -299,4 +312,4 @@ namespace Ui {
 
 QT_END_NAMESPACE
 
-#endif // MAINWINDOWDU9073_H
+#endif // MAINWINDOWN12296_H

@@ -42,6 +42,12 @@ private slots:
 
     void on_actionASCII_triggered();
 
+    void on_actionAutomatic_triggered();
+
+    void on_actionUndo_triggered();
+
+    void on_actionRedo_triggered();
+
 private:
     Ui::MainWindow *ui;
     QFile* currentFile;
@@ -50,6 +56,7 @@ private:
     void init();
     void setCurrentFile(QFile*);
     void setAddresses();
+    void setMenusEnabled(bool);
 
     bool viewASCII;
     bool colorELF;
