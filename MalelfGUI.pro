@@ -19,7 +19,8 @@ SOURCES += src/main.cpp\
     src/qhexedit/qhexedit_p.cpp \
     src/qhexedit/xbytearray.cpp \
     src/controller/MainWindowController.cpp \
-    src/util/Util.cpp
+    src/util/Util.cpp \
+    src/gui/OptionsDialog.cpp
 
 HEADERS  += src/gui/MainWindow.h \
     src/qhexedit/commands.h \
@@ -28,9 +29,11 @@ HEADERS  += src/gui/MainWindow.h \
     src/qhexedit/xbytearray.h \
     src/gui/ui_MainWindow.h \
     src/controller/MainWindowController.h \
-    src/util/Util.h
+    src/util/Util.h \
+    src/gui/OptionsDialog.h
 
-FORMS    += src/gui/MainWindow.ui
+FORMS    += src/gui/MainWindow.ui \
+    src/gui/OptionsDialog.ui
 
 OTHER_FILES += \
     src/qhexedit/license.txt

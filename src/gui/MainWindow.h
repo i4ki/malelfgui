@@ -48,6 +48,8 @@ private slots:
 
     void on_actionRedo_triggered();
 
+    void on_actionOptions_triggered();
+
 private:
     Ui::MainWindow *ui;
     QFile* currentFile;

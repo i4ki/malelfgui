@@ -1,14 +1,14 @@
 /********************************************************************************
-** Form generated from reading UI file 'MainWindown12296.ui'
+** Form generated from reading UI file 'MainWindownn6243.ui'
 **
-** Created: Wed Mar 27 11:41:34 2013
+** Created: Mon Apr 1 09:59:43 2013
 **      by: Qt User Interface Compiler version 4.8.3
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef MAINWINDOWN12296_H
-#define MAINWINDOWN12296_H
+#ifndef MAINWINDOWNN6243_H
+#define MAINWINDOWNN6243_H
 
 #include <QtCore/QVariant>
 #include <QtGui/QAction>
@@ -48,6 +48,7 @@ public:
     QAction *actionASCII;
     QAction *actionAutomatic;
     QAction *actionInteractive;
+    QAction *actionOptions;
     QWidget *centralwidget;
     QHBoxLayout *horizontalLayout;
     QSplitter *splitter_2;
@@ -117,6 +118,8 @@ public:
         actionInteractive = new QAction(MainWindow);
         actionInteractive->setObjectName(QString::fromUtf8("actionInteractive"));
         actionInteractive->setEnabled(false);
+        actionOptions = new QAction(MainWindow);
+        actionOptions->setObjectName(QString::fromUtf8("actionOptions"));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         centralwidget->setEnabled(true);
@@ -205,6 +208,7 @@ public:
         menuEdit->addAction(actionFind_Replace);
         menuEdit->addSeparator();
         menuEdit->addAction(menuView->menuAction());
+        menuEdit->addAction(actionOptions);
         menuView->addAction(actionColor_ELF);
         menuView->addAction(actionASCII);
         menuInfect->addAction(menuInfect_Binary->menuAction());
@@ -244,6 +248,7 @@ public:
         actionASCII->setText(QApplication::translate("MainWindow", "ASCII", 0, QApplication::UnicodeUTF8));
         actionAutomatic->setText(QApplication::translate("MainWindow", "Automatic", 0, QApplication::UnicodeUTF8));
         actionInteractive->setText(QApplication::translate("MainWindow", "Interactive", 0, QApplication::UnicodeUTF8));
+        actionOptions->setText(QApplication::translate("MainWindow", "Options", 0, QApplication::UnicodeUTF8));
         QTreeWidgetItem *___qtreewidgetitem = fileTree->headerItem();
         ___qtreewidgetitem->setText(2, QApplication::translate("MainWindow", "Value", 0, QApplication::UnicodeUTF8));
         ___qtreewidgetitem->setText(1, QApplication::translate("MainWindow", "Description", 0, QApplication::UnicodeUTF8));
@@ -312,4 +317,4 @@ namespace Ui {
 
 QT_END_NAMESPACE
 
-#endif // MAINWINDOWN12296_H
+#endif // MAINWINDOWNN6243_H

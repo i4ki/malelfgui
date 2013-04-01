@@ -666,7 +666,7 @@ void QHexEditPrivate::paintEvent(QPaintEvent *event)
             {               
                 if(_colorELF)
                 {
-                    int address = lineIdx + _xData.addressOffset();
+                    int address = lineIdx + colIdx + _xData.addressOffset();
 
                     QColor headerColor = Qt::red;
                     QColor phtColor = Qt::green;

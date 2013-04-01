@@ -1,7 +1,10 @@
 #include "MainWindow.h"
 #include "ui_MainWindow.h"
+#include "OptionsDialog.h"
 
 #include <iostream>
+#include <unistd.h>
+#include <signal.h>
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -10,7 +13,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    util = new Util();
+    util = Util::getInstance();
 
     init();
 }
@@ -74,7 +77,7 @@ void MainWindow::on_actionOpen_ELF_triggered()
     this->setCurrentFile(file);
     this->setMenusEnabled(true);
 
-    QString cmd = "malelf dissect -i " + fileName;
+    QString cmd = "dissect -i " + fileName;
     QString result = util->executeMalelf(cmd);
     ui->log->setText(result);
 }
@@ -135,7 +138,7 @@ void MainWindow::on_actionSave_ELF_As_triggered()
 void MainWindow::on_actionDisassemble_triggered()
 {
     if(this->currentFile){
-        QString cmd = "malelf disas -i " + this->currentFile->fileName();
+        QString cmd = "disas -i " + this->currentFile->fileName();
         QString result = util->executeMalelf(cmd);
         ui->log->setText(result);
     }
@@ -144,7 +147,7 @@ void MainWindow::on_actionDisassemble_triggered()
 void MainWindow::on_actionReverse_into_C_triggered()
 {
     if(this->currentFile){
-        QString cmd = "malelf reverse_elf -r -i " + this->currentFile->fileName();
+        QString cmd = "reverse_elf -r -i " + this->currentFile->fileName();
         QString result = util->executeMalelf(cmd);
         ui->log->setText(result);
     }
@@ -174,9 +177,43 @@ void MainWindow::setAddresses(){
 void MainWindow::on_actionAutomatic_triggered()
 {
     if(this->currentFile){
-        /*QString cmd = "malelf dynanalyse -a -i " + this->currentFile->fileName();
+        /*QString cmd = "dynanalyse -a -i " + this->currentFile->fileName();
         QString result = util->executeMalelf(cmd);
         ui->log->setText(result);*/
+
+        /*
+        pid_t pid = NULL;
+        int pipefd[2];
+        FILE* output;
+        char buf[256];
+
+        pipe(pipefd);
+        pid = fork();
+        if (pid == 0)
+        {
+        // Child
+          dup2(pipefd[0], STDIN_FILENO);
+          dup2(pipefd[1], STDOUT_FILENO);
+          dup2(pipefd[1], STDERR_FILENO);
+          execl("malelf", "/usr/bin/malelf", (char*) NULL);
+          // Nothing below this line should be executed by child process. If so,
+          // it means that the execl function wasn't successfull, so lets exit:
+          exit(1);
+        }
+        // The code below will be executed only by parent. You can write and read
+        // from the child using pipefd descriptors, and you can send signals to
+        // the process using its pid by kill() function. If the child process will
+        // exit unexpectedly, the parent process will obtain SIGCHLD signal that
+        // can be handled (e.g. you can respawn the child process).
+
+        // Now, you can write to the process using pipefd[0], and read from pipefd[1]:
+
+        write(pipefd[0], "message", strlen("message")); // write message to the process
+        read(pipefd[1], buf, sizeof(buf)); // read from the process. Note that this will catch
+                                           // standard  output together with error output
+        ui->log->setText(buf);
+        kill(pid, SIGKILL); //send signo signal to the child process
+        */
     }
 }
 
@@ -195,4 +232,10 @@ void MainWindow::on_actionUndo_triggered()
 void MainWindow::on_actionRedo_triggered()
 {
     ui->hexDump->redo();
+}
+
+void MainWindow::on_actionOptions_triggered()
+{
+    OptionsDialog* options = new OptionsDialog(this);
+    options->show();
 }
